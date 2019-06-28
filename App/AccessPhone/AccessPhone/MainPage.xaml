@@ -1,9 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:AccessPhone" x:Class="AccessPhone.MainPage">
-     <Grid x:Name="Grid">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-    </Grid>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="ImageButton" >
+                <Setter Property="BackgroundColor" Value="Black" />
+                <Setter Property="WidthRequest" Value="96" />
+                <Setter Property="HeightRequest" Value="96" />
+            </Style>
+            <Style TargetType="Label" >
+                <Setter Property="TextColor" Value="#3F807A" />
+            </Style>
+            <Style TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="Black" />
+                <Setter Property="CornerRadius" Value="10" />
+                <Setter Property="OutlineColor" Value="#3F807A" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout BackgroundColor="Black" Margin="0,40">
+        <Label/>
+        <Label x:Name="Identifier" Text="User's Phone" HorizontalTextAlignment="Center" />
+         <FlexLayout x:Name="Flex" BackgroundColor="Black" Wrap="Wrap" JustifyContent="Center" >
+            <Frame x:Name="TalkFrame">
+                <StackLayout>
+                    <ImageButton Source="talk.png"/>
+                    <Label Text="Talk" HorizontalTextAlignment="Center"/>
+                </StackLayout>
+            </Frame>
+            <Frame x:Name="PayFrame">
+                <StackLayout>
+                    <ImageButton Source="pay.png"/>
+                    <Label Text="Pay" HorizontalTextAlignment="Center"/>
+                </StackLayout>
+            </Frame>
+            <Frame x:Name="PeopleFrame">
+                <StackLayout>
+                    <ImageButton Source="people.png"/>
+                    <Label Text="Friends" HorizontalTextAlignment="Center"/>
+                </StackLayout>
+            </Frame>
+            <Frame x:Name="LockFrame">
+                <StackLayout>
+                    <ImageButton Source="lock.png"/>
+                    <Label Text="Keys" HorizontalTextAlignment="Center"/>
+                </StackLayout>
+            </Frame>
+            <Frame x:Name="ToDoFrame">
+                <StackLayout>
+                    <ImageButton Source="checklist.png"/>
+                    <Label Text="To Do" HorizontalTextAlignment="Center"/>
+                </StackLayout>
+            </Frame>
+            <Frame x:Name="DatesFrame">
+                <StackLayout>
+                    <ImageButton Source="calendar.png"/>
+                    <Label Text="Dates" HorizontalTextAlignment="Center"/>
+                </StackLayout>
+            </Frame>
+            <Frame x:Name="EmergencyFrame">
+                <StackLayout>
+                    <ImageButton Source="ambulance.png"/>
+                    <Label Text="Emergency" HorizontalTextAlignment="Center"/>
+                </StackLayout>
+            </Frame>
+         </FlexLayout>
+    </StackLayout>
 </ContentPage>
