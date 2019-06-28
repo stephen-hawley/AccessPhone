@@ -12,12 +12,29 @@ namespace AccessPhone {
 	// by visiting https://aka.ms/xamarinforms-previewer
 	[DesignTimeVisible (true)]
 	public partial class MainPage : ContentPage {
-		List<ITopLevelActivity> activities;
+		public List<ITopLevelActivity> Activities;
 		public MainPage ()
 		{
+			Activities = GatherActivities ();
 			InitializeComponent ();
-			activities = GatherActivities ();
-//			AddButtons (activities);
+			NavigationPage.SetHasNavigationBar (this, false);
+
+			foreach (var activity in Activities) {
+				var matchingFrame = Flex.FindByName<Frame> (activity.Name + "Frame");
+				if (matchingFrame != null) {
+					var binding = new Binding ("IsAllowed");
+					binding.Source = activity;
+					matchingFrame.SetBinding (Frame.IsVisibleProperty, binding);
+					var subButton = matchingFrame.FindByName<ImageButton> (activity.Name);
+					if (subButton != null) {
+						binding = new Binding ("IsEnabled");
+						binding.Source = activity;
+						subButton.SetBinding (ImageButton.IsEnabledProperty, binding);
+					}
+				}
+			}
+
+			var contacts = Plugin.ContactService.CrossContactService.Current.GetContactList ();
 		}
 
 		List<ITopLevelActivity> GatherActivities ()
@@ -38,19 +55,50 @@ namespace AccessPhone {
 			return activities;
 		}
 
-		//void AddButtons (IEnumerable<ITopLevelActivity> activities)
-		//{
-		//	var buttons = activities.Select (a => a.Button);
+		void ButtonClicked (string activityName)
+		{
+			var activity = FindActivityByName (activityName);
+			if (activity == null)
+				return;
+			var page = activity.GetPage ();
+			if (page != null) {
+				Navigation.PushAsync (page);
+			}
+		}
 
-		//	int i = 0;
-		//	foreach (Button b in buttons) {
-		//		if ((i & 1) == 0) {
-		//			Grid.RowDefinitions.Add (new RowDefinition { Height = new GridLength (1, GridUnitType.Star) });
-		//		}
-		//		Grid.Children.Add (b, (i & 1), i / 2);
-		//		i++;
-		//	}
+		void Talk_Clicked (object sender, System.EventArgs e)
+		{
+			ButtonClicked (nameof(Talk));
+		}
+		void Pay_Clicked (object sender, System.EventArgs e)
+		{
+			ButtonClicked (nameof(Pay));
+		}
+		void People_Clicked (object sender, System.EventArgs e)
+		{
+			ButtonClicked (nameof(People));
+		}
+		void Lock_Clicked (object sender, System.EventArgs e)
+		{
+			ButtonClicked (nameof(Lock));
+		}
+		void ToDo_Clicked (object sender, System.EventArgs e)
+		{
+			ButtonClicked (nameof(ToDo));
+		}
+		void Dates_Clicked (object sender, System.EventArgs e)
+		{
+			ButtonClicked (nameof(Dates));
+		}
+		void Emergency_Clicked (object sender, System.EventArgs e)
+		{
+			ButtonClicked (nameof(Emergency));
+		}
 
-		//}
+
+		ITopLevelActivity FindActivityByName (string name)
+		{
+			return Activities.FirstOrDefault (act => act.Name == name);
+		}
 	}
 }

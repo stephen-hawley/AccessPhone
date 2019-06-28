@@ -142,5 +142,7 @@
     <BundleResource Include="Resources\checklist.png" />
     <BundleResource Include="Resources\people.png" />
     <BundleResource Include="Resources\ambulance.png" />
+    <BundleResource Include="Resources\camera.png" />
+    <BundleResource Include="Resources\hills.png" />
   </ItemGroup>
 </Project>
