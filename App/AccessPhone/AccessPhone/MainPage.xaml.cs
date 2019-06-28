@@ -17,7 +17,7 @@ namespace AccessPhone {
 		{
 			InitializeComponent ();
 			activities = GatherActivities ();
-			AddButtons (activities);
+//			AddButtons (activities);
 		}
 
 		List<ITopLevelActivity> GatherActivities ()
@@ -38,19 +38,19 @@ namespace AccessPhone {
 			return activities;
 		}
 
-		void AddButtons (IEnumerable<ITopLevelActivity> activities)
-		{
-			var buttons = activities.Select (a => a.Button);
+		//void AddButtons (IEnumerable<ITopLevelActivity> activities)
+		//{
+		//	var buttons = activities.Select (a => a.Button);
 
-			int i = 0;
-			foreach (Button b in buttons) {
-				if ((i & 1) == 0) {
-					Grid.RowDefinitions.Add (new RowDefinition { Height = new GridLength (1, GridUnitType.Star) });
-				}
-				Grid.Children.Add (b, (i & 1), i / 2);
-				i++;
-			}
+		//	int i = 0;
+		//	foreach (Button b in buttons) {
+		//		if ((i & 1) == 0) {
+		//			Grid.RowDefinitions.Add (new RowDefinition { Height = new GridLength (1, GridUnitType.Star) });
+		//		}
+		//		Grid.Children.Add (b, (i & 1), i / 2);
+		//		i++;
+		//	}
 
-		}
+		//}
 	}
 }
