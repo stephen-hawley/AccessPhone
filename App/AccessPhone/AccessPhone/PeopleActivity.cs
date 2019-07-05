@@ -3,22 +3,22 @@ using System.ComponentModel;
 using Xamarin.Forms;
 
 namespace AccessPhone {
-	public class TalkActivity : ITopLevelActivity {
+	public class PeopleActivity : ITopLevelActivity {
 		bool allowed = true;
 		bool enabled = true;
 
-		public TalkActivity ()
+		public PeopleActivity ()
 		{
 		}
 
-		public string Name => "Talk";
+		public string Name => "People";
 
 		public bool IsAllowed {
 			get { return allowed; }
 			set {
 				if (allowed != value) {
 					allowed = value;
-					OnPropertyChanged (nameof(IsAllowed));
+					OnPropertyChanged (nameof (IsAllowed));
 				}
 			}
 		}
@@ -43,7 +43,7 @@ namespace AccessPhone {
 
 		public Page GetPage ()
 		{
-			return null;
+			return new PeoplePage ();
 		}
 	}
 }
