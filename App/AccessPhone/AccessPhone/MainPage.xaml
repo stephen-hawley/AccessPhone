@@ -15,7 +15,6 @@
                 <Setter Property="CornerRadius" Value="10" />
                 <Setter Property="OutlineColor" Value="#3F807A" />
             </Style>
-            
         </ResourceDictionary>
     </ContentPage.Resources>
     <StackLayout BackgroundColor="Black" Margin="0,40">
