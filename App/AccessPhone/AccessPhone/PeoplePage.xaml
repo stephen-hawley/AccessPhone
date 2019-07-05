@@ -3,6 +3,38 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="AccessPhone.PeoplePage"
              Title="People">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label" >
+                <Setter Property="TextColor" Value="#3F807A" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+            <Style TargetType="Grid">
+                <Setter Property="BackgroundColor" Value="Black" />
+            </Style>
+        </ResourceDictionary> 
+    </ContentPage.Resources>
     <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*" />
+                <RowDefinition Height=".5*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <BoxView BackgroundColor="Blue" Grid.Row="0" Grid.Column="0" />
+            <BoxView Grid.Row="1" Grid.Column="0" BackgroundColor="Maroon"/>
+            <ListView x:Name="listView" Grid.Row="2" Grid.Column="0" BackgroundColor="Black" ItemsSource="{Binding .}">
+                <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="{Binding PhotoUriThumbnail, TargetNullValue='person.png'}" />
+                            <Label Text="{Binding Name}" FontSize="Large"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
