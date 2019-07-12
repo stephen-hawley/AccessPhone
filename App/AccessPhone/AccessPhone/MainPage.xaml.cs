@@ -95,7 +95,6 @@ namespace AccessPhone {
 			ButtonClicked (nameof(Emergency));
 		}
 
-
 		ITopLevelActivity FindActivityByName (string name)
 		{
 			return Activities.FirstOrDefault (act => act.Name == name);
