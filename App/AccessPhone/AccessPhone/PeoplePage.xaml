@@ -21,7 +21,28 @@
                 <RowDefinition Height=".5*" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <BoxView BackgroundColor="Blue" Grid.Row="0" Grid.Column="0" />
+            
+            <RelativeLayout Grid.Row="0" Grid.Column="0" >
+                <Grid RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                             RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}"
+                             >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    
+                    <ContentView Padding="5" Grid.Row="0" Grid.Column="0">
+                        <Label x:Name="BigLabel" Text="{Binding Path=Name}" FontSize="Large" TextColor="#3F807A" HorizontalOptions="Center" />
+                    </ContentView>
+                    <Image x:Name="BigPhoto" Source="{Binding Path=Image}"  Grid.Row="1" Grid.Column="0" />
+                </Grid>
+                <StackLayout Orientation="Horizontal"
+                             RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=.75}"
+                             RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=.75}">
+                    <Button x:Name="Message" Text="💬" IsVisible="{Binding Path=ShowMessage}" FontSize="Large" BackgroundColor="Blue" WidthRequest="50" HeightRequest="50" CornerRadius="25" Margin="10"/>
+                    <Button x:Name="Call" Text="📞" IsVisible="{Binding Path=ShowCall}" FontSize="Large"  BackgroundColor="Red"  WidthRequest="50" HeightRequest="50" CornerRadius="25" Margin= "10"/>
+                </StackLayout>
+            </RelativeLayout>
             <BoxView Grid.Row="1" Grid.Column="0" BackgroundColor="Maroon"/>
             <ListView x:Name="listView" Grid.Row="2" Grid.Column="0" BackgroundColor="Black" ItemsSource="{Binding .}">
                 <ListView.ItemTemplate>

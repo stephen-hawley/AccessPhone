@@ -33,12 +33,11 @@ namespace AccessPhone {
 			}
 		}
 
-		public event PropertyChangedEventHandler PropertyChanged = (s, e) => { };
+		public event PropertyChangedEventHandler PropertyChanged;
 
 		protected virtual void OnPropertyChanged (string propertyName)
 		{
-			var changed = PropertyChanged;
-			changed (this, new PropertyChangedEventArgs (propertyName));
+			PropertyChanged?.Invoke (this, new PropertyChangedEventArgs (propertyName));
 		}
 
 		public Page GetPage ()
