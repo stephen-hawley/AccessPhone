@@ -39,8 +39,16 @@
                 <StackLayout Orientation="Horizontal"
                              RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=.75}"
                              RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=.75}">
-                    <Button x:Name="Message" Text="💬" IsVisible="{Binding Path=ShowMessage}" FontSize="Large" BackgroundColor="Blue" WidthRequest="50" HeightRequest="50" CornerRadius="25" Margin="10"/>
-                    <Button x:Name="Call" Text="📞" IsVisible="{Binding Path=ShowCall}" FontSize="Large"  BackgroundColor="Red"  WidthRequest="50" HeightRequest="50" CornerRadius="25" Margin= "10"/>
+                    <Button x:Name="Message" Text="💬" IsEnabled="{Binding Path=CanMessage}"
+                            Clicked="Message_Clicked"
+                            IsVisible="{Binding Path=ShowMessage}" FontSize="Large" 
+                            BackgroundColor="{Binding Path=MessageBackgroundColor}" 
+                            WidthRequest="50" HeightRequest="50" CornerRadius="25" Margin="10"/>
+                    <Button x:Name="Call" Text="📞" IsEnabled="{Binding Path=CanCall}" 
+                            Clicked="Call_Clicked"
+                            IsVisible="{Binding Path=ShowCall}" FontSize="Large"  
+                            BackgroundColor="{Binding Path=CallBackgroundColor}"  
+                            WidthRequest="50" HeightRequest="50" CornerRadius="25" Margin= "10"/>
                 </StackLayout>
             </RelativeLayout>
             <BoxView Grid.Row="1" Grid.Column="0" BackgroundColor="Maroon"/>
