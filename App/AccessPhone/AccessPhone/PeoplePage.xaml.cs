@@ -46,9 +46,19 @@ namespace AccessPhone {
 			} else {
 				peopleViewModel.Image = contact.PhotoUri ?? "person.png";
 				peopleViewModel.Name = contact.Name ?? "?";
-				peopleViewModel.CallPermission = Permission.Allowed;
+				peopleViewModel.CallPermission = Permission.UnavailableNow;
 				peopleViewModel.MessagePermission = Permission.Allowed;
 			}
+		}
+
+		void Message_Clicked (object sender, System.EventArgs e)
+		{
+
+		}
+
+		void Call_Clicked (object sender, System.EventArgs e)
+		{
+
 		}
 	}
 }
