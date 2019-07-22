@@ -35,6 +35,7 @@ namespace AccessPhone {
 			}
 
 			var contacts = Plugin.ContactService.CrossContactService.Current.GetContactList ();
+			Identifier.Text = Xamarin.Essentials.DeviceInfo.Name;
 		}
 
 		List<ITopLevelActivity> GatherActivities ()
