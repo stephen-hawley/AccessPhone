@@ -32,7 +32,7 @@
                     </Grid.RowDefinitions>
                     
                     <ContentView Padding="5" Grid.Row="0" Grid.Column="0">
-                        <Label x:Name="BigLabel" Text="{Binding Path=Name}" FontSize="Large" TextColor="#3F807A" HorizontalOptions="Center" />
+                        <Label x:Name="BigLabel" Text="{Binding Path=FullName}" FontSize="Large" TextColor="#3F807A" HorizontalOptions="Center" />
                     </ContentView>
                     <Image x:Name="BigPhoto" Source="{Binding Path=Image}"  Grid.Row="1" Grid.Column="0" />
                 </Grid>
@@ -57,8 +57,8 @@
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Orientation="Horizontal">
-                            <Image Source="{Binding PhotoUriThumbnail, TargetNullValue='person.png'}" />
-                            <Label Text="{Binding Name}" FontSize="Large"/>
+                            <Image Source="{Binding ThumbnailPath, TargetNullValue='person.png'}" />
+                            <Label Text="{Binding FullName}" FontSize="Large"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

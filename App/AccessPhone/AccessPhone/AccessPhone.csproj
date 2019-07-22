@@ -13,10 +13,10 @@
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="3.6.0.264807" />
     <PackageReference Include="Xamarin.Essentials" Version="1.0.1" />
-    <PackageReference Include="Xamarin.Forms.Contacts" Version="1.0.5" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+    <Folder Include="Contacts\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="Resources\Resources.resx" />
