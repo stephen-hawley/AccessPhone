@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using AccessPhone.Contacts;
 using Xamarin.Forms;
 
 namespace AccessPhone {
@@ -34,7 +35,6 @@ namespace AccessPhone {
 				}
 			}
 
-			var contacts = Plugin.ContactService.CrossContactService.Current.GetContactList ();
 			Identifier.Text = Xamarin.Essentials.DeviceInfo.Name;
 		}
 

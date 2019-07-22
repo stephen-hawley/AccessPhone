@@ -2,36 +2,41 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using Plugin.ContactService;
-using Plugin.ContactService.Shared;
 using Xamarin.Forms;
 using System.Linq;
-
+using AccessPhone.Contacts;
+using System.IO;
 
 namespace AccessPhone {
 	public partial class PeoplePage : ContentPage {
-		ObservableCollection<Contact> contactsCollection;
 		PeopleActivity peopleActivity;
 		public PeoplePageViewModel peopleViewModel;
 		public PeoplePage (PeopleActivity people)
 		{
 			peopleActivity = people;
 			InitializeComponent ();
-			GetContacts ();
 			listView.ItemTapped += OnTapped;
 			peopleViewModel = new PeoplePageViewModel ();
 			BigPhoto.BindingContext = peopleViewModel;
 			BigLabel.BindingContext = peopleViewModel;
 			Message.BindingContext = peopleViewModel;
 			Call.BindingContext = peopleViewModel;
+			Contacts = new ObservableCollection<Contact> ();
+			listView.BindingContext = Contacts;
 		}
 
 
-		async Task GetContacts ()
+
+		public async Task GetContactsAsync ()
 		{
-			var contacts = await CrossContactService.Current.GetContactListAsync();
-			contacts.OrderBy (ct => ct.Name);
-			listView.BindingContext = contacts;
+			var contactService = DependencyService.Get<IContactService> ();
+			await Task.Run (() => {
+				var contacts = contactService.GetContacts ();
+				foreach (var contact in contacts) {
+					Contacts.Add (contact);
+				}
+				Contacts.OrderBy (ct => ct.FullName);
+			});
 		}
 
 
@@ -44,8 +49,8 @@ namespace AccessPhone {
 				peopleViewModel.CallPermission = Permission.Disallowed;
 				peopleViewModel.MessagePermission = Permission.Disallowed;
 			} else {
-				peopleViewModel.Image = contact.PhotoUri ?? "person.png";
-				peopleViewModel.Name = contact.Name ?? "?";
+				peopleViewModel.Image = contact.ImagePath ?? "person.png";
+				peopleViewModel.Name = contact.FullName ?? "?";
 				peopleViewModel.CallPermission = Permission.UnavailableNow;
 				peopleViewModel.MessagePermission = Permission.Allowed;
 			}
@@ -60,5 +65,7 @@ namespace AccessPhone {
 		{
 
 		}
+
+		public ObservableCollection<Contact> Contacts { get; private set; }
 	}
 }

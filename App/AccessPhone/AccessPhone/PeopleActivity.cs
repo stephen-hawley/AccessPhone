@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace AccessPhone {
@@ -44,7 +45,9 @@ namespace AccessPhone {
 
 		public Page GetPage ()
 		{
-			return new PeoplePage (this);
+			var page = new PeoplePage (this);
+			page.GetContactsAsync ();
+			return page;
 		}
 	}
 }
