@@ -36,7 +36,7 @@
             <Frame x:Name="PeopleFrame" IsVisible="false">
                 <StackLayout>
                     <ImageButton  x:Name="People" Source="people.png" Clicked="People_Clicked"/>
-                    <Label Text="Friends" HorizontalTextAlignment="Center"/>
+                    <Label Text="People" HorizontalTextAlignment="Center"/>
                 </StackLayout>
             </Frame>
             <Frame x:Name="LockFrame" IsVisible="false">
