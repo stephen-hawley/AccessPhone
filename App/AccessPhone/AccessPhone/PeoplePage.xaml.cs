@@ -46,11 +46,15 @@ namespace AccessPhone {
 			if (contact == null) {
 				peopleViewModel.Image = null;
 				peopleViewModel.Name = null;
+				peopleViewModel.FirstName = null;
+				peopleViewModel.LastName = null;
 				peopleViewModel.CallPermission = Permission.Disallowed;
 				peopleViewModel.MessagePermission = Permission.Disallowed;
 			} else {
 				peopleViewModel.Image = contact.ImagePath ?? "person.png";
 				peopleViewModel.Name = contact.FullName ?? "?";
+				peopleViewModel.FirstName = contact.FirstName ?? contact.LastName ?? contact.FullName ?? "?";
+				peopleViewModel.LastName = contact.LastName ?? contact.FullName ?? "?";
 				peopleViewModel.CallPermission = Permission.UnavailableNow;
 				peopleViewModel.MessagePermission = Permission.Allowed;
 			}
