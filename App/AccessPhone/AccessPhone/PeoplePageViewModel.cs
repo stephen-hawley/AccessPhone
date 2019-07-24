@@ -5,6 +5,7 @@ using Xamarin.Forms;
 namespace AccessPhone {
 	public class PeoplePageViewModel : INotifyPropertyChanged {
 
+		const string kButtonActiveBackground = "#4177DD";
 		public PeoplePageViewModel ()
 		{
 		}
@@ -31,6 +32,31 @@ namespace AccessPhone {
 			}
 		}
 
+		string firstName;
+		public string FirstName
+		{
+			get => firstName;
+			set {
+				if (firstName == value)
+					return;
+				firstName = value;
+				OnPropertyChanged(nameof(FirstName));
+			}
+		}
+
+		string lastName;
+		public string LastName
+		{
+			get => lastName;
+			set
+			{
+				if (lastName == value)
+					return;
+				lastName = value;
+				OnPropertyChanged(nameof(LastName));
+			}
+		}
+
 
 		Permission callPermission = Permission.UnavailableNow;
 		public Permission CallPermission {
@@ -43,7 +69,7 @@ namespace AccessPhone {
 			}
 		}
 
-		Color callColor = Color.FromHex ("#3F807A");
+		Color callColor = Color.FromHex (kButtonActiveBackground);
 		public Color CallBackgroundColor {
 			get => callColor;
 			set {
@@ -88,7 +114,7 @@ namespace AccessPhone {
 
 		}
 
-		Color messageColor = Color.FromHex ("#3F807A");
+		Color messageColor = Color.FromHex (kButtonActiveBackground);
 		public Color MessageBackgroundColor {
 			get => messageColor;
 			set {
@@ -135,7 +161,7 @@ namespace AccessPhone {
 			case Permission.UnavailableNow:
 				return Color.FromHex ("#808080");
 			default:
-				return Color.FromHex ("#3F807A");
+				return Color.FromHex (kButtonActiveBackground);
 			}
 		}
 	}

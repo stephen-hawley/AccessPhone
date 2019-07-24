@@ -7,6 +7,7 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using Android.Support.V4.App;
+using ImageCircle.Forms.Plugin.Droid;
 
 namespace AccessPhone.Droid {
 	[Activity (Label = "AccessPhone", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
@@ -20,6 +21,7 @@ namespace AccessPhone.Droid {
 
 			Xamarin.Essentials.Platform.Init (this, savedInstanceState);
 			global::Xamarin.Forms.Forms.Init (this, savedInstanceState);
+			ImageCircleRenderer.Init ();
 			LoadApplication (new App ());
 
 
