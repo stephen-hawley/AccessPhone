@@ -14,8 +14,17 @@ namespace AccessPhone {
 	[DesignTimeVisible (true)]
 	public partial class MainPage : ContentPage {
 		public List<ITopLevelActivity> Activities;
+		TopLevelDataModel topLevelDataModel;
+
 		public MainPage ()
 		{
+		}
+
+		protected override async void OnAppearing ()
+		{
+			base.OnAppearing ();
+			topLevelDataModel = await TopLevelDataModel.Load ();
+
 			Activities = GatherActivities ();
 			InitializeComponent ();
 			NavigationPage.SetHasNavigationBar (this, false);
@@ -35,7 +44,7 @@ namespace AccessPhone {
 				}
 			}
 
-			Identifier.Text = Xamarin.Essentials.DeviceInfo.Name;
+			Identifier.Text = topLevelDataModel.UserFirstName;
 		}
 
 		List<ITopLevelActivity> GatherActivities ()
@@ -49,6 +58,7 @@ namespace AccessPhone {
 					continue;
 				try {
 					var instance = ctor.Invoke (null) as ITopLevelActivity;
+					instance.TopLevelDataModel = topLevelDataModel;
 					if (instance != null)
 						activities.Add (instance);
 				} catch { }

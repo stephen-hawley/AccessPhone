@@ -24,7 +24,7 @@
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Orientation="Horizontal">
-                            <controls:CircleImage Source="{Binding ThumbnailPath, TargetNullValue='person.png'}" />
+                            <controls:CircleImage Source="{Binding ThumbnailPath, TargetNullValue='personblue.png'}" />
                             <Label Text="{Binding FullName}" FontSize="Large"/>
                         </StackLayout>
                     </ViewCell>
@@ -65,13 +65,19 @@
                             BackgroundColor="{Binding Path=MessageBackgroundColor}"
                             TextColor="White"
                             IsEnabled="{Binding Path=CanMessage}"
+                            IsVisible="{Binding Path=ShowMessage}"
                             CornerRadius="0"
+                            BorderColor="Black"
+                            BorderWidth="2"
                             />
                     <Button x:Name="Call" Text="📞 Call" FontSize="Medium"
                             BackgroundColor="{Binding Path=CallBackgroundColor}" 
                             TextColor="White"
                             IsEnabled="{Binding Path=CanCall}"
+                            IsVisible="{Binding Path=ShowCall}"
                             CornerRadius="0"
+                            BorderColor="Black"
+                            BorderWidth="2"
                             />
                 </StackLayout>
             </Grid>

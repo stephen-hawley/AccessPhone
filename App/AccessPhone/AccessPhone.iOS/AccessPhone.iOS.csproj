@@ -146,6 +146,7 @@
     <BundleResource Include="Resources\camera.png" />
     <BundleResource Include="Resources\hills.png" />
     <BundleResource Include="Resources\person.png" />
+    <BundleResource Include="Resources\personblue.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Contacts\" />

@@ -3,26 +3,32 @@ using System.ComponentModel;
 using Xamarin.Forms;
 
 namespace AccessPhone {
-	public class TalkActivity : ITopLevelActivity {
-		bool allowed = true;
-		bool enabled = true;
-
-		public TalkActivity ()
+	public class EmergencyActivity : ITopLevelActivity {
+		public EmergencyActivity ()
 		{
 		}
 
-		public string Name => "Talk";
+		public string Name => "Emergency";
 
+		public TopLevelDataModel TopLevelDataModel { get; set; }
+
+		public Page GetPage ()
+		{
+			throw new NotImplementedException ();
+		}
+
+		bool allowed = true;
 		public bool IsAllowed {
 			get { return allowed; }
 			set {
 				if (allowed != value) {
 					allowed = value;
-					OnPropertyChanged (nameof(IsAllowed));
+					OnPropertyChanged (nameof (IsAllowed));
 				}
 			}
 		}
 
+		bool enabled = true;
 		public bool IsEnabled {
 			get { return enabled; }
 			set {
@@ -33,18 +39,11 @@ namespace AccessPhone {
 			}
 		}
 
-		public TopLevelDataModel TopLevelDataModel { get; set; }
-
-		public event PropertyChangedEventHandler PropertyChanged;
+		public event PropertyChangedEventHandler PropertyChanged = (s, e) => { };
 
 		protected virtual void OnPropertyChanged (string propertyName)
 		{
 			PropertyChanged?.Invoke (this, new PropertyChangedEventArgs (propertyName));
-		}
-
-		public Page GetPage ()
-		{
-			return null;
 		}
 	}
 }

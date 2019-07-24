@@ -159,7 +159,7 @@ namespace AccessPhone {
 		{
 			switch (perm) {
 			case Permission.UnavailableNow:
-				return Color.FromHex ("#808080");
+				return Color.FromHex ("#c0c0c0");
 			default:
 				return Color.FromHex (kButtonActiveBackground);
 			}
