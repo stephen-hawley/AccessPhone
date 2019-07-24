@@ -8,5 +8,6 @@ namespace AccessPhone {
 		bool IsAllowed { get; set; }
 		bool IsEnabled { get; set; }
 		Page GetPage();
+		TopLevelDataModel TopLevelDataModel { get; set; }
 	}
 }

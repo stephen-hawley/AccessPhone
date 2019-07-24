@@ -11,32 +11,22 @@ namespace AccessPhone {
 	public partial class PeoplePage : ContentPage {
 		PeopleActivity peopleActivity;
 		public PeoplePageViewModel peopleViewModel;
-		public PeoplePage (PeopleActivity people)
+		TopLevelDataModel topLevelDataModel;
+		public PeoplePage (PeopleActivity people, TopLevelDataModel topLevelDataModel)
 		{
 			peopleActivity = people;
 			InitializeComponent ();
 			listView.ItemTapped += OnTapped;
+			this.topLevelDataModel = topLevelDataModel;
+
 			peopleViewModel = new PeoplePageViewModel ();
 			BigPhoto.BindingContext = peopleViewModel;
 			BigLabel.BindingContext = peopleViewModel;
 			Message.BindingContext = peopleViewModel;
 			Call.BindingContext = peopleViewModel;
 			Contacts = new ObservableCollection<Contact> ();
-			listView.BindingContext = Contacts;
-		}
 
-
-
-		public async Task GetContactsAsync ()
-		{
-			var contactService = DependencyService.Get<IContactService> ();
-			await Task.Run (() => {
-				var contacts = contactService.GetContacts ();
-				foreach (var contact in contacts) {
-					Contacts.Add (contact);
-				}
-				Contacts.OrderBy (ct => ct.FullName);
-			});
+			listView.BindingContext = topLevelDataModel.Contacts;
 		}
 
 
@@ -51,7 +41,7 @@ namespace AccessPhone {
 				peopleViewModel.CallPermission = Permission.Disallowed;
 				peopleViewModel.MessagePermission = Permission.Disallowed;
 			} else {
-				peopleViewModel.Image = contact.ImagePath ?? "person.png";
+				peopleViewModel.Image = contact.ImagePath ?? "personblue.png";
 				peopleViewModel.Name = contact.FullName ?? "?";
 				peopleViewModel.FirstName = contact.FirstName ?? contact.LastName ?? contact.FullName ?? "?";
 				peopleViewModel.LastName = contact.LastName ?? contact.FullName ?? "?";
