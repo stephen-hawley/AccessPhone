@@ -69,6 +69,7 @@
                             CornerRadius="0"
                             BorderColor="Black"
                             BorderWidth="2"
+                            Clicked="Message_Clicked"
                             />
                     <Button x:Name="Call" Text="📞 Call" FontSize="Medium"
                             BackgroundColor="{Binding Path=CallBackgroundColor}" 
@@ -78,6 +79,7 @@
                             CornerRadius="0"
                             BorderColor="Black"
                             BorderWidth="2"
+                            Clicked="Call_Clicked"
                             />
                 </StackLayout>
             </Grid>

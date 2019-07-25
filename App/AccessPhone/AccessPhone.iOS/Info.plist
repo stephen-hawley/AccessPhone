@@ -36,5 +36,9 @@
 	<string>Assets.xcassets/AppIcon.appiconset</string>
 	<key>NSContactsUsageDescription</key>
 	<string>We are using contacts to make calls, texts, or email.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Allows user to speak to enter text</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Allows user to record their voice</string>
 </dict>
 </plist>
