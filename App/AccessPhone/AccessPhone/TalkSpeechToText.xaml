@@ -15,15 +15,26 @@
             
             <StackLayout Grid.Row="3" Grid.Column="0" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="30">
                 <Button Text="Clear" BackgroundColor="#4177DD"
-                        TextColor="White" Padding="10" Clicked="Clear_Clicked"/>
+                        TextColor="White" Padding="10" Clicked="Clear_Clicked"
+                        BorderColor="Black" BorderWidth="2"
+                        />
                 <Button x:Name="Record" Text="🎤 Hold" IsEnabled="false" 
                         Pressed="Record_Pressed" Released="Record_Released"
                         BackgroundColor="#4177DD"
                         TextColor="White" Padding="10"
                         CornerRadius="40"
+                        BorderColor="Black" BorderWidth="2"
                         />
+                 <Button Text="Read" BackgroundColor="#4177DD"
+                        TextColor="White" Padding="10"
+                        BorderColor="Black" BorderWidth="2"
+                         Clicked="Read_Clicked"
+                        />
+
                 <Button Text="Send" BackgroundColor="#4177DD"
-                        TextColor="White" Padding="10"/>
+                        TextColor="White" Padding="10"
+                        BorderColor="Black" BorderWidth="2"
+                        />
             </StackLayout>
         </Grid>
     </ContentPage.Content>

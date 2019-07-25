@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using AccessPhone.SpeechRecognition;
 using Xamarin.Forms;
+using Xamarin.Essentials;
 
 namespace AccessPhone {
 	public partial class TalkSpeechToText : ContentPage {
@@ -36,7 +37,7 @@ namespace AccessPhone {
 			}
 		}
 
-		void Record_Pressed (object sender, System.EventArgs e)
+		void Record_Pressed (object sender, EventArgs e)
 		{
 			if (recognizer == null) {
 				recognizer = speechService.CreateRecognizer ();
@@ -67,7 +68,7 @@ namespace AccessPhone {
 			RecordedText.Text = e.Text;
 		}
 
-		void Clear_Clicked (object sender, System.EventArgs e)
+		void Clear_Clicked (object sender, EventArgs e)
 		{
 			FullText.Text = "";
 		}
@@ -79,6 +80,13 @@ namespace AccessPhone {
 				text.Append (' ');
 			text.Append (textToAdd);
 			FullText.Text = text.ToString ();
+		}
+
+		async void Read_Clicked (object sender, EventArgs e)
+		{
+			if (FullText.Text.Length <= 0)
+				return;
+			await TextToSpeech.SpeakAsync (FullText.Text);
 		}
 
 	}
