@@ -77,10 +77,6 @@ namespace AccessPhone {
 			}
 		}
 
-		void Talk_Clicked (object sender, System.EventArgs e)
-		{
-			ButtonClicked (nameof(Talk));
-		}
 		void Pay_Clicked (object sender, System.EventArgs e)
 		{
 			ButtonClicked (nameof(Pay));

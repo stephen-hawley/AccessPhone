@@ -8,5 +8,11 @@ namespace AccessPhone {
 		Disallowed, // you can't do it and can't see it
 		UnavailableNow, // you can't do it right now
 	}
+
+	public enum PermissionRequest {
+		Pending,
+		Allowed,
+		Disallowed
+	}
 }
 

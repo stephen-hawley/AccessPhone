@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="AccessPhone.TalkSpeechToText">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40*" />
+                <RowDefinition Height="20*" />
+                <RowDefinition Height="20*" />
+                <RowDefinition Height="10*" />
+                <RowDefinition Height="10*" />
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" Text="Texting history" BackgroundColor="#8080ff" />
+            <Editor  x:Name="FullText" Grid.Row="1" Grid.Column="0" Placeholder="Hold record to add text" />
+            <Label Grid.Row="2" Grid.Column="0" x:Name="RecordedText" Text="" />
+            
+            <StackLayout Grid.Row="3" Grid.Column="0" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="30">
+                <Button Text="Clear" BackgroundColor="#4177DD"
+                        TextColor="White" Padding="10" Clicked="Clear_Clicked"
+                        BorderColor="Black" BorderWidth="2"
+                        />
+                <Button x:Name="Record" Text="🎤 Hold" IsEnabled="false" 
+                        Pressed="Record_Pressed" Released="Record_Released"
+                        BackgroundColor="#4177DD"
+                        TextColor="White" Padding="10"
+                        CornerRadius="40"
+                        BorderColor="Black" BorderWidth="2"
+                        />
+                 <Button Text="Read" BackgroundColor="#4177DD"
+                        TextColor="White" Padding="10"
+                        BorderColor="Black" BorderWidth="2"
+                         Clicked="Read_Clicked"
+                        />
+
+                <Button Text="Send" BackgroundColor="#4177DD"
+                        TextColor="White" Padding="10"
+                        BorderColor="Black" BorderWidth="2"
+                        />
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

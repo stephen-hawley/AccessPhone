@@ -6,6 +6,7 @@ using Xamarin.Forms;
 using System.Linq;
 using AccessPhone.Contacts;
 using System.IO;
+using Xamarin.Essentials;
 
 namespace AccessPhone {
 	public partial class PeoplePage : ContentPage {
@@ -41,24 +42,33 @@ namespace AccessPhone {
 				peopleViewModel.CallPermission = Permission.Disallowed;
 				peopleViewModel.MessagePermission = Permission.Disallowed;
 			} else {
+				currentContact = contact;
 				peopleViewModel.Image = contact.ImagePath ?? "personblue.png";
 				peopleViewModel.Name = contact.FullName ?? "?";
 				peopleViewModel.FirstName = contact.FirstName ?? contact.LastName ?? contact.FullName ?? "?";
 				peopleViewModel.LastName = contact.LastName ?? contact.FullName ?? "?";
-				peopleViewModel.CallPermission = Permission.UnavailableNow;
+				peopleViewModel.CallPermission = Permission.Allowed;
 				peopleViewModel.MessagePermission = Permission.Allowed;
 			}
 		}
 
 		void Message_Clicked (object sender, System.EventArgs e)
 		{
-
+			Navigation.PushAsync (new TalkSpeechToText ());
 		}
 
 		void Call_Clicked (object sender, System.EventArgs e)
 		{
-
+			if (currentContact == null)
+				return;
+			try {
+				PhoneDialer.Open (currentContact.Numbers [0].Number);
+			} catch (Exception err) {
+				Console.WriteLine (err.Message);
+			}
 		}
+
+		Contact currentContact = null;
 
 		public ObservableCollection<Contact> Contacts { get; private set; }
 	}

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using AccessPhone.Contacts;
+using AccessPhone.SpeechRecognition;
 using Xamarin.Forms;
 
 namespace AccessPhone {
@@ -60,6 +61,7 @@ namespace AccessPhone {
 				OnPropertyChanged (nameof (UserFullName));
 			}
 		}
+
 
 		public async Task GetContactsAsync ()
 		{

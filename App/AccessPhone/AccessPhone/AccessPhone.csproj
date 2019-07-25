@@ -18,6 +18,7 @@
   <ItemGroup>
     <Folder Include="Resources\" />
     <Folder Include="Contacts\" />
+    <Folder Include="SpeechRecognition\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="Resources\Resources.resx" />

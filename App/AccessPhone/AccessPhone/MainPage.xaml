@@ -4,8 +4,8 @@
         <ResourceDictionary>
             <Style TargetType="ImageButton" >
                 <Setter Property="BackgroundColor" Value="#1870B1" />
-                <Setter Property="WidthRequest" Value="96" />
-                <Setter Property="HeightRequest" Value="96" />
+                <Setter Property="WidthRequest" Value="80" />
+                <Setter Property="HeightRequest" Value="80" />
             </Style>
             <Style TargetType="Label" >
                 <Setter Property="TextColor" Value="White" />
@@ -25,23 +25,11 @@
             <Label Text="😊" FontSize="Large" />
         </StackLayout>
         <Label Text="What do you want to do?" Margin="20" />
-         <FlexLayout x:Name="Flex" BackgroundColor="Black" Wrap="Wrap" JustifyContent="Center" Padding="20" Margin="40">
-            <Frame x:Name="TalkFrame" IsVisible="false" >
+         <FlexLayout x:Name="Flex" BackgroundColor="Black" Wrap="Wrap" JustifyContent="Center" Padding="10" Margin="10">
+            <Frame x:Name="EmergencyFrame" IsVisible="false" >
                 <StackLayout>
-                    <ImageButton x:Name="Talk" Source="talk.png" Clicked="Talk_Clicked"/>
-                    <Label Text="Talk" HorizontalTextAlignment="Center"/>
-                </StackLayout>
-            </Frame>
-            <Frame x:Name="PayFrame" IsVisible="false" >
-                <StackLayout>
-                    <ImageButton x:Name="Pay" Source="pay.png" Clicked="Pay_Clicked"/>
-                    <Label Text="Pay" HorizontalTextAlignment="Center"/>
-                </StackLayout>
-            </Frame>
-            <Frame x:Name="PeopleFrame" IsVisible="false" >
-                <StackLayout>
-                    <ImageButton  x:Name="People" Source="people.png" Clicked="People_Clicked"/>
-                    <Label Text="People" HorizontalTextAlignment="Center"/>
+                    <ImageButton x:Name="Emergency" Source="ambulance.png" Clicked="Emergency_Clicked"/>
+                    <Label Text="Emergency" HorizontalTextAlignment="Center"/>
                 </StackLayout>
             </Frame>
             <Frame x:Name="LockFrame" IsVisible="false" >
@@ -56,16 +44,22 @@
                     <Label Text="To Do" HorizontalTextAlignment="Center"/>
                 </StackLayout>
             </Frame>
+            <Frame x:Name="PayFrame" IsVisible="false" >
+                <StackLayout>
+                    <ImageButton x:Name="Pay" Source="pay.png" Clicked="Pay_Clicked"/>
+                    <Label Text="Pay" HorizontalTextAlignment="Center"/>
+                </StackLayout>
+            </Frame>
+            <Frame x:Name="PeopleFrame" IsVisible="false" >
+                <StackLayout>
+                    <ImageButton  x:Name="People" Source="people.png" Clicked="People_Clicked"/>
+                    <Label Text="People" HorizontalTextAlignment="Center"/>
+                </StackLayout>
+            </Frame>
             <Frame x:Name="DatesFrame" IsVisible="false" >
                 <StackLayout>
                     <ImageButton  x:Name="Dates" Source="calendar.png" Clicked="Dates_Clicked"/>
                     <Label Text="Dates" HorizontalTextAlignment="Center"/>
-                </StackLayout>
-            </Frame>
-            <Frame x:Name="EmergencyFrame" IsVisible="false" >
-                <StackLayout>
-                    <ImageButton x:Name="Emergency" Source="ambulance.png" Clicked="Emergency_Clicked"/>
-                    <Label Text="Emergency" HorizontalTextAlignment="Center"/>
                 </StackLayout>
             </Frame>
          </FlexLayout>
