@@ -35,6 +35,7 @@ namespace AccessPhone {
 			if (readPermission && speechService.IsPermitted == PermissionRequest.Allowed) {
 				Record.IsEnabled = true;
 			}
+
 		}
 
 		void Record_Pressed (object sender, EventArgs e)

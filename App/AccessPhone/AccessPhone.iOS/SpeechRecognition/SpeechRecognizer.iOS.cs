@@ -10,7 +10,7 @@ namespace AccessPhone.iOS.SpeechRecognition {
 	internal class SpeechRecognizer : ISpeechRecognizer {
 		AVAudioEngine audioEngine = new AVAudioEngine ();
 		SFSpeechRecognizer speechRecognizer = new SFSpeechRecognizer ();
-		SFSpeechAudioBufferRecognitionRequest recognitionRequest = new SFSpeechAudioBufferRecognitionRequest ();
+		SFSpeechAudioBufferRecognitionRequest liveRequest = new SFSpeechAudioBufferRecognitionRequest ();
 		SFSpeechRecognitionTask recognitionTask;
 
 		string recognizedText = "";
@@ -38,36 +38,37 @@ namespace AccessPhone.iOS.SpeechRecognition {
 			audioSession.SetMode (AVAudioSession.ModeMeasurement, out err);
 			err = audioSession.SetActive (true, AVAudioSessionSetActiveOptions.NotifyOthersOnDeactivation);
 
-			// Configure request so that results are returned before audio recording is finished
-			recognitionRequest = new SFSpeechAudioBufferRecognitionRequest {
+
+			liveRequest = new SFSpeechAudioBufferRecognitionRequest {
 				ShouldReportPartialResults = true
 			};
 
-			var inputNode = audioEngine.InputNode;
-			if (inputNode == null)
-				throw new InvalidProgramException ("Audio engine has no input node");
+			var node = audioEngine.InputNode;
+			var recordingFormat = node.GetBusOutputFormat (0);
+			node.InstallTapOnBus (0, 1024, recordingFormat, (AVAudioPcmBuffer buffer, AVAudioTime when) => {
+				// Append buffer to recognition request
+				liveRequest.Append (buffer);
+			});
 
-			// A recognition task represents a speech recognition session.
-			// We keep a reference to the task so that it can be cancelled.
-			recognitionTask = speechRecognizer.GetRecognitionTask (recognitionRequest, (result, error) => {
+			recognitionTask = speechRecognizer.GetRecognitionTask (liveRequest, (SFSpeechRecognitionResult result, NSError error) => {
+
 				var isFinal = false;
 				if (result != null) {
 					recognizedText = result.BestTranscription.FormattedString;
-					OnSpeechRecognized (new SpeechRecognizedEvent(recognizedText));
+					OnSpeechRecognized (new SpeechRecognizedEvent (recognizedText));
 					isFinal = result.Final;
 				}
 
 				if (error != null || isFinal) {
-					audioEngine.Stop ();
-					inputNode.RemoveTapOnBus (0);
-					recognitionRequest = null;
+					audioSession.SetCategory (AVAudioSessionCategory.Playback);
+					audioSession.SetMode (AVAudioSession.ModeDefault, out err);
+					node.RemoveTapOnBus (0);
+					audioEngine.Dispose ();
+					liveRequest.Dispose ();
+					recognitionTask.Dispose ();
+					liveRequest = null;
 					recognitionTask = null;
 				}
-			});
-
-			var recordingFormat = inputNode.GetBusOutputFormat (0);
-			inputNode.InstallTapOnBus (0, 1024, recordingFormat, (buffer, when) => {
-				recognitionRequest?.Append (buffer);
 			});
 
 			audioEngine.Prepare ();
@@ -77,6 +78,8 @@ namespace AccessPhone.iOS.SpeechRecognition {
 		public string Stop ()
 		{
 			audioEngine.Stop ();
+			recognitionTask.Finish ();
+			liveRequest.EndAudio ();
 			return recognizedText;
 		}
 
