@@ -10,10 +10,10 @@
                 <RowDefinition Height="10*" />
             </Grid.RowDefinitions>
             <Label Grid.Row="0" Grid.Column="0" Text="Texting history" BackgroundColor="#8080ff" />
-            <Editor  x:Name="FullText" Grid.Row="1" Grid.Column="0" Placeholder="Hold record to add text" />
+            <Editor  x:Name="FullText" Grid.Row="1" Grid.Column="0" Placeholder="Hold 🎤 to add text" />
             <Label Grid.Row="2" Grid.Column="0" x:Name="RecordedText" Text="" />
             
-            <StackLayout Grid.Row="3" Grid.Column="0" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="30">
+            <StackLayout Grid.Row="3" Grid.Column="0" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="20">
                 <Button Text="Clear" BackgroundColor="#4177DD"
                         TextColor="White" Padding="10" Clicked="Clear_Clicked"
                         BorderColor="Black" BorderWidth="2"

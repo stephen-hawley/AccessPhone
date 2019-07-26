@@ -25,38 +25,38 @@
             <Label Text="😊" FontSize="Large" />
         </StackLayout>
         <Label Text="What do you want to do?" Margin="20" />
-         <FlexLayout x:Name="Flex" BackgroundColor="Black" Wrap="Wrap" JustifyContent="Center" Padding="10" Margin="10">
-            <Frame x:Name="EmergencyFrame" IsVisible="false" >
+         <FlexLayout x:Name="Flex" BackgroundColor="Black" Wrap="Wrap" JustifyContent="SpaceAround" Padding="20">
+            <Frame x:Name="EmergencyFrame" IsVisible="false" Margin="10">
                 <StackLayout>
                     <ImageButton x:Name="Emergency" Source="ambulance.png" Clicked="Emergency_Clicked"/>
                     <Label Text="Emergency" HorizontalTextAlignment="Center"/>
                 </StackLayout>
             </Frame>
-            <Frame x:Name="LockFrame" IsVisible="false" >
+            <Frame x:Name="LockFrame" IsVisible="false"  Margin="10">
                 <StackLayout>
                     <ImageButton  x:Name="Lock" Source="lock.png" Clicked="Lock_Clicked"/>
                     <Label Text="Keys" HorizontalTextAlignment="Center"/>
                 </StackLayout>
             </Frame>
-            <Frame x:Name="ToDoFrame" IsVisible="false" >
+            <Frame x:Name="ToDoFrame" IsVisible="false" Margin="10" >
                 <StackLayout>
                     <ImageButton x:Name="ToDo" Source="checklist.png" Clicked="ToDo_Clicked"/>
                     <Label Text="To Do" HorizontalTextAlignment="Center"/>
                 </StackLayout>
             </Frame>
-            <Frame x:Name="PayFrame" IsVisible="false" >
+            <Frame x:Name="PayFrame" IsVisible="false" Margin="10">
                 <StackLayout>
                     <ImageButton x:Name="Pay" Source="pay.png" Clicked="Pay_Clicked"/>
                     <Label Text="Pay" HorizontalTextAlignment="Center"/>
                 </StackLayout>
             </Frame>
-            <Frame x:Name="PeopleFrame" IsVisible="false" >
+            <Frame x:Name="PeopleFrame" IsVisible="false"  Margin="10">
                 <StackLayout>
                     <ImageButton  x:Name="People" Source="people.png" Clicked="People_Clicked"/>
                     <Label Text="People" HorizontalTextAlignment="Center"/>
                 </StackLayout>
             </Frame>
-            <Frame x:Name="DatesFrame" IsVisible="false" >
+            <Frame x:Name="DatesFrame" IsVisible="false"  Margin="10">
                 <StackLayout>
                     <ImageButton  x:Name="Dates" Source="calendar.png" Clicked="Dates_Clicked"/>
                     <Label Text="Dates" HorizontalTextAlignment="Center"/>
