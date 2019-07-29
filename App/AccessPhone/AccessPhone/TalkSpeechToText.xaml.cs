@@ -51,6 +51,7 @@ namespace AccessPhone {
 		{
 			if (recognizer != null) {
 				recognizer.Stop ();
+				recognizer.SpeechRecognized -= SpeechReceived;
 				recognizer = null;
 				AddText (RecordedText.Text);
 				RecordedText.Text = "";

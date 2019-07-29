@@ -8,6 +8,7 @@ using Android.Widget;
 using Android.OS;
 using Android.Support.V4.App;
 using ImageCircle.Forms.Plugin.Droid;
+using Android.Content;
 
 namespace AccessPhone.Droid {
 	[Activity (Label = "AccessPhone", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
@@ -40,6 +41,11 @@ namespace AccessPhone.Droid {
 				Manifest.Permission.WriteExternalStorage
 			};
 			ActivityCompat.RequestPermissions (this, perms, 1);
+		}
+
+		protected override void OnActivityResult (int requestCode, Result resultCode, Intent data)
+		{
+			base.OnActivityResult (requestCode, resultCode, data);
 		}
 	}
 }
