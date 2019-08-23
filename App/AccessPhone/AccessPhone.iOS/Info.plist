@@ -40,5 +40,9 @@
 	<string>Allows user to speak to enter text</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Allows user to record their voice</string>
+	<key>NSRemindersUsageDescription</key>
+	<string>We are using reminders for the To Do List.</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>We are using the calendar for the To Do List.</string>
 </dict>
 </plist>

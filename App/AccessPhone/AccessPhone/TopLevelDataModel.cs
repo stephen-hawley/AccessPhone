@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AccessPhone.Contacts;
 using AccessPhone.SpeechRecognition;
+using AccessPhone.ToDo;
 using Xamarin.Forms;
 
 namespace AccessPhone {
@@ -13,6 +14,8 @@ namespace AccessPhone {
 		private TopLevelDataModel ()
 		{
 			Contacts = new ObservableCollection<Contact> ();
+			ToDo = new ObservableCollection<IToDoItem> ();
+			ToDone = new ObservableCollection<IToDoItem> ();
 		}
 
 
@@ -76,6 +79,9 @@ namespace AccessPhone {
 		}
 
 		public ObservableCollection<Contact> Contacts { get; private set; }
+
+		public ObservableCollection<IToDoItem> ToDo { get; private set; }
+		public ObservableCollection<IToDoItem> ToDone { get; private set; }
 
 		public event PropertyChangedEventHandler PropertyChanged;
 

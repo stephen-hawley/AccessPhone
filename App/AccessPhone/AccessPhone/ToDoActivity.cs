@@ -1,11 +1,16 @@
 ﻿using System;
 using System.ComponentModel;
+using AccessPhone.ToDo;
 using Xamarin.Forms;
 
 namespace AccessPhone {
 	public class ToDoActivity : ITopLevelActivity {
+		IToDoService toDoService;
 		public ToDoActivity ()
 		{
+			toDoService = DependencyService.Get<IToDoService> ();
+			toDoService.CreateService ();
+			enabled = toDoService.Available;
 		}
 
 		public string Name => "ToDo";
@@ -14,7 +19,7 @@ namespace AccessPhone {
 
 		public Page GetPage ()
 		{
-			throw new NotImplementedException ();
+			return new ToDoPage (this, TopLevelDataModel, toDoService);
 		}
 
 		bool allowed = true;
