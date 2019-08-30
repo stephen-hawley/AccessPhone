@@ -3,8 +3,9 @@ using UIKit;
 using Xamarin.Forms;
 using AccessPhone.SpeechRecognition;
 using Speech;
+using AccessPhone.iOS.SpeechRecognition;
 
-[assembly: Dependency (typeof (AccessPhone.iOS.SpeechRecognition.SpeechService))]
+[assembly: Dependency (typeof (SpeechService))]
 namespace AccessPhone.iOS.SpeechRecognition {
 	public class SpeechService : ISpeechService {
 		public SpeechService ()

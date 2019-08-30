@@ -54,8 +54,10 @@ namespace AccessPhone.Android.Contacts {
 			var parts = fullName.Split (' ');
 			var firstName = GetFirstName (parts);
 			var lastName = GetLastName (parts);
-			var imageUriStr = GetRealPathFromURI (ctx, cursor.StringFromKey (ContactsContract.Contacts.InterfaceConsts.PhotoUri));
-			var thumbUriStr = GetRealPathFromURI (ctx, cursor.StringFromKey (ContactsContract.Contacts.InterfaceConsts.PhotoThumbnailUri));
+			var photoURI = cursor.StringFromKey (ContactsContract.Contacts.InterfaceConsts.PhotoUri) ?? "";
+			var imageUriStr = GetRealPathFromURI (ctx, photoURI);
+			var thumbUri = cursor.StringFromKey (ContactsContract.Contacts.InterfaceConsts.PhotoThumbnailUri) ?? "";
+			var thumbUriStr = GetRealPathFromURI (ctx, thumbUri);
 
 			var contact = new Contact () {
 				FullName = fullName,

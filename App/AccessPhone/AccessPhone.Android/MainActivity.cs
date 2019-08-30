@@ -38,7 +38,7 @@ namespace AccessPhone.Droid {
 		{
 			var perms = new string [] {
 				Manifest.Permission.ReadContacts, Manifest.Permission.ReadExternalStorage,
-				Manifest.Permission.WriteExternalStorage
+				Manifest.Permission.WriteExternalStorage, Manifest.Permission.ReadCalendar,
 			};
 			ActivityCompat.RequestPermissions (this, perms, 1);
 		}

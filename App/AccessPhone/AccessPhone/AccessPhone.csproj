@@ -19,6 +19,7 @@
     <Folder Include="Resources\" />
     <Folder Include="Contacts\" />
     <Folder Include="SpeechRecognition\" />
+    <Folder Include="ToDo\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="Resources\Resources.resx" />

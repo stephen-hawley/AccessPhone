@@ -72,6 +72,7 @@
     <Compile Include="Contacts\ContactService.iOS.cs" />
     <Compile Include="SpeechRecognition\SpeechRecognizer.iOS.cs" />
     <Compile Include="SpeechRecognition\SpeechService.iOS.cs" />
+    <Compile Include="ToDo\ToDoService.iOS.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -153,5 +154,6 @@
   <ItemGroup>
     <Folder Include="Contacts\" />
     <Folder Include="SpeechRecognition\" />
+    <Folder Include="ToDo\" />
   </ItemGroup>
 </Project>

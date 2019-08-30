@@ -13,7 +13,6 @@ namespace AccessPhone {
 
 		public PeopleActivity ()
 		{
-			//Contacts = new ObservableCollection<Contact> ();
 		}
 
 		public string Name => "People";
@@ -40,19 +39,6 @@ namespace AccessPhone {
 
 		public TopLevelDataModel TopLevelDataModel { get; set; }
 
-		//public async Task GetContactsAsync ()
-		//{
-		//	var contactService = DependencyService.Get<IContactService> ();
-		//	await Task.Run (() => {
-		//		var contacts = contactService.GetContacts ();
-		//		foreach (var contact in contacts) {
-		//			Contacts.Add (contact);
-		//		}
-		//		Contacts.OrderBy (ct => ct.FullName);
-		//	});
-		//}
-
-		//public ObservableCollection<Contact> Contacts { get; private set; }
 
 		public event PropertyChangedEventHandler PropertyChanged = (s, e) => { };
 
@@ -64,7 +50,6 @@ namespace AccessPhone {
 		public Page GetPage ()
 		{
 			var page = new PeoplePage (this, TopLevelDataModel);
-			//page.GetContactsAsync ();
 			return page;
 		}
 	}

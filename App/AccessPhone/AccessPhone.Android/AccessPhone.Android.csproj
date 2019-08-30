@@ -73,6 +73,7 @@
     <Compile Include="Extensions.cs" />
     <Compile Include="SpeechRecognition\SpeechService.android.cs" />
     <Compile Include="SpeechRecognition\SpeechRecognizer.android.cs" />
+    <Compile Include="ToDo\ToDoService.android.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -126,6 +127,7 @@
     <Folder Include="Resources\drawable-xxxhdpi\" />
     <Folder Include="Contacts\" />
     <Folder Include="SpeechRecognition\" />
+    <Folder Include="ToDo\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AccessPhone\AccessPhone.csproj">
