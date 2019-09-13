@@ -19,11 +19,27 @@ namespace AccessPhone {
 			ToDone = topLevelDataModel.ToDone;
 			InitializeComponent ();
 			toDoView.BindingContext = ToDo;
+			DoneView.BindingContext = ToDone;
 		}
 
 		protected override void OnAppearing ()
 		{
 			toDoService.LoadAndMergeTodaysItems (ToDo, ToDone);
+		}
+
+		public void OnSwipedToDo (object sender, SwipedEventArgs args)
+		{
+			Console.WriteLine ("doing something");
+		}
+
+		public void OnDoneDelete (object sender, EventArgs e)
+		{
+			var mi = ((MenuItem)sender);
+		}
+
+		public void OnToDoDelete (object sender, EventArgs e)
+		{
+			var mi = ((MenuItem)sender);
 		}
 
 
