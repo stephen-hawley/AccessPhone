@@ -17,14 +17,9 @@
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Orientation="Horizontal">
+                            <CheckBox CheckedChanged="OnDoneUnchecked" IsChecked="True"/>
                             <Label Text="{Binding Text}" FontSize="Large"/>
-                            <!--<StackLayout.GestureRecognizers>
-                                <SwipeGestureRecognizer Direction="Left,Right" />
-                            </StackLayout.GestureRecognizers>-->
                         </StackLayout>
-                        <ViewCell.ContextActions>
-                            <MenuItem Clicked="OnDoneDelete" CommandParameter="{Binding .}" Text="Delete" IsDestructive="True" />
-                        </ViewCell.ContextActions>
                     </ViewCell>
                 </DataTemplate>
                 </ListView.ItemTemplate>
@@ -34,14 +29,9 @@
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Orientation="Horizontal">
+                            <CheckBox CheckedChanged="OnToDoChecked" IsChecked="False"/>
                             <Label Text="{Binding Text}" FontSize="Large"/>
-                            <!--<StackLayout.GestureRecognizers>
-                                <SwipeGestureRecognizer Direction="Left,Right" Swiped="OnSwipedToDo"  />
-                            </StackLayout.GestureRecognizers>-->
                         </StackLayout>
-                        <ViewCell.ContextActions>
-                            <MenuItem Clicked="OnToDoDelete" CommandParameter="{Binding .}" Text="Delete" IsDestructive="True" />
-                        </ViewCell.ContextActions>
                     </ViewCell>
                 </DataTemplate>
                 </ListView.ItemTemplate>
