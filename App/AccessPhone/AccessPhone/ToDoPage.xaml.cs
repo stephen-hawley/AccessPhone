@@ -19,6 +19,9 @@ namespace AccessPhone {
 			ToDone = topLevelDataModel.ToDone;
 			InitializeComponent ();
 			toDoView.BindingContext = ToDo;
+			DoneView.BindingContext = ToDone;
+			toDoView.ItemTapped += OnToDoItemTapped;
+			DoneView.ItemTapped += OnDoneItemTapped;
 		}
 
 		protected override void OnAppearing ()
@@ -26,8 +29,58 @@ namespace AccessPhone {
 			toDoService.LoadAndMergeTodaysItems (ToDo, ToDone);
 		}
 
+		protected void OnToDoChecked (object sender, EventArgs args)
+		{
+			var item = FindAssociatedToDoItem (sender as Element, ToDo);
+			if (item != null) {
+				item.Completed = true;
+				ToDo.Remove (item);
+				ToDone.Add (item);
+			}
+		}
+
+		protected void OnDoneUnchecked (object sender, EventArgs args)
+		{
+			var item = FindAssociatedToDoItem (sender as Element, ToDone);
+			if (item != null) {
+				item.Completed = false;
+				ToDone.Remove (item);
+				ToDo.Add (item);
+			}
+		}
+
+		void OnToDoItemTapped (object sender, ItemTappedEventArgs e)
+		{
+			var item = ToDo [e.ItemIndex];
+			item.Completed = true;
+			ToDo.Remove (item);
+			ToDone.Add (item);
+		}
+
+		void OnDoneItemTapped (object sender, ItemTappedEventArgs e)
+		{
+			var item = ToDone [e.ItemIndex];
+			item.Completed = false;
+			ToDone.Remove (item);
+			ToDo.Add (item);
+		}
 
 		public ObservableCollection<IToDoItem> ToDo { get; private set; }
 		public ObservableCollection<IToDoItem> ToDone { get; private set; }
+
+		static IToDoItem FindAssociatedToDoItem (Element hostView, ObservableCollection<IToDoItem> items)
+		{
+			while (true) {
+				if (hostView == null)
+					return null;
+				if (hostView.BindingContext is IToDoItem item) {
+					if (items.Contains (item))
+						return item;
+					return null;
+				} else {
+					hostView = hostView.Parent;
+				}
+			}
+		}
 	}
 }

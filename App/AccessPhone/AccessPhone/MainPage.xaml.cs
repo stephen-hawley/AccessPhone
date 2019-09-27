@@ -18,6 +18,7 @@ namespace AccessPhone {
 
 		public MainPage ()
 		{
+			InitializeComponent ();
 		}
 
 		protected override async void OnAppearing ()
@@ -26,7 +27,6 @@ namespace AccessPhone {
 			topLevelDataModel = await TopLevelDataModel.Load ();
 
 			Activities = GatherActivities ();
-			InitializeComponent ();
 			NavigationPage.SetHasNavigationBar (this, false);
 
 			foreach (var activity in Activities) {
