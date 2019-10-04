@@ -24,9 +24,11 @@ namespace AccessPhone {
 		protected override async void OnAppearing ()
 		{
 			base.OnAppearing ();
-			topLevelDataModel = await TopLevelDataModel.Load ();
+			if (topLevelDataModel == null)
+				topLevelDataModel = await TopLevelDataModel.Load ();
 
-			Activities = GatherActivities ();
+			if (Activities == null)
+				Activities = GatherActivities ();
 			NavigationPage.SetHasNavigationBar (this, false);
 
 			foreach (var activity in Activities) {

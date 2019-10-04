@@ -46,9 +46,13 @@ namespace AccessPhone.iOS.ToDo {
 		{
 			if (eventStore == null) {
 				eventStore = new EKEventStore ();
+				bool valueSet = false;
 				eventStore.RequestAccess (EKEntityType.Reminder, (granted, err) => {
 					available = granted;
+					valueSet = true;
 				});
+				while (!valueSet) { }
+					
 			}
 		}
 
