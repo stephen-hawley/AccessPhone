@@ -79,27 +79,6 @@
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
-    <None Include="..\AccessPhone.iOS\Resources\ambulance.png">
-      <Link>Resources\ambulance.png</Link>
-    </None>
-    <None Include="..\AccessPhone.iOS\Resources\calendar.png">
-      <Link>Resources\calendar.png</Link>
-    </None>
-    <None Include="..\AccessPhone.iOS\Resources\checklist.png">
-      <Link>Resources\checklist.png</Link>
-    </None>
-    <None Include="..\AccessPhone.iOS\Resources\lock.png">
-      <Link>Resources\lock.png</Link>
-    </None>
-    <None Include="..\AccessPhone.iOS\Resources\pay.png">
-      <Link>Resources\pay.png</Link>
-    </None>
-    <None Include="..\AccessPhone.iOS\Resources\people.png">
-      <Link>Resources\people.png</Link>
-    </None>
-    <None Include="..\AccessPhone.iOS\Resources\talk.png">
-      <Link>Resources\talk.png</Link>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Tabbar.axml" />
@@ -118,6 +97,41 @@
     <AndroidResource Include="Resources\mipmap-xxhdpi\launcher_foreground.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\icon.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
+    <AndroidResource Include="..\AccessPhone.iOS\Resources\talk.png">
+      <Link>Resources\drawable\talk.png</Link>
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="..\AccessPhone.iOS\Resources\ambulance.png">
+      <Link>Resources\drawable\ambulance.png</Link>
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="..\AccessPhone.iOS\Resources\calendar.png">
+      <Link>Resources\drawable\calendar.png</Link>
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="..\AccessPhone.iOS\Resources\checklist.png">
+      <Link>Resources\drawable\checklist.png</Link>
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="..\AccessPhone.iOS\Resources\lock.png">
+      <Link>Resources\drawable\lock.png</Link>
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="..\AccessPhone.iOS\Resources\pay.png">
+      <Link>Resources\drawable\pay.png</Link>
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="..\AccessPhone.iOS\Resources\people.png">
+      <Link>Resources\drawable\people.png</Link>
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
