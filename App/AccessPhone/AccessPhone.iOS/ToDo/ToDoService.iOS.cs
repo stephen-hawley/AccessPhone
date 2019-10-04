@@ -51,6 +51,8 @@ namespace AccessPhone.iOS.ToDo {
 					available = granted;
 					valueSet = true;
 				});
+				// it's probably bad to busy-wait here, but the permission to use this might
+				// not be quite there yet. Probably better if CreateService was async maybe?
 				while (!valueSet) { }
 					
 			}
