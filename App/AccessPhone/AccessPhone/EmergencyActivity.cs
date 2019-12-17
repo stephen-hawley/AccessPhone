@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using AccessPhone.HelpMe;
 using Xamarin.Forms;
 
 namespace AccessPhone {
@@ -14,7 +15,7 @@ namespace AccessPhone {
 
 		public Page GetPage ()
 		{
-			throw new NotImplementedException ();
+			return new SimpleChoicePage ();
 		}
 
 		bool allowed = true;
