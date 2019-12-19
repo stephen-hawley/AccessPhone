@@ -1,15 +1,17 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AccessPhone.HelpMe.SimpleChoicePage">
+             x:Class="AccessPhone.HelpMe.SimpleChoicePage"
+             x:Name="thePage">
     <ContentPage.Content>
         <StackLayout>
-            <Label x:Name="MainText" Text="{Binding Text}" />
-            <StackLayout x:Name="Choices" BindableLayout.ItemsSource="{Binding .}">
+            <Label Text="{Binding Text}" FontSize="20" />
+            <StackLayout BindableLayout.ItemsSource="{Binding Responses}" >
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
-                            <Button Text="{Binding Path=Text}" />
-                        </ViewCell>
+                        <Button Text="{Binding Text}"
+                                Command="{Binding Source={x:Reference thePage}, Path=BindingContext.ResponseCommand}"
+                                CommandParameter="{Binding UniqueID}"
+                                />
                     </DataTemplate>
                 </BindableLayout.ItemTemplate>
             </StackLayout>

@@ -1,7 +1,8 @@
 ﻿using System;
 namespace AccessPhone.HelpMe {
-	public enum HelpItemType {
-		Main,
-		FollowUp
+	public enum ResponseActionType {
+		FurtherQuestion,
+		PerformAction,
+		EndCase
 	}
 }
