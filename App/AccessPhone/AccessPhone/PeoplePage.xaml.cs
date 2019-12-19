@@ -25,7 +25,6 @@ namespace AccessPhone {
 			BigLabel.BindingContext = peopleViewModel;
 			Message.BindingContext = peopleViewModel;
 			Call.BindingContext = peopleViewModel;
-			Contacts = new ObservableCollection<Contact> ();
 
 			listView.BindingContext = topLevelDataModel.Contacts;
 		}
@@ -70,6 +69,5 @@ namespace AccessPhone {
 
 		Contact currentContact = null;
 
-		public ObservableCollection<Contact> Contacts { get; private set; }
 	}
 }
