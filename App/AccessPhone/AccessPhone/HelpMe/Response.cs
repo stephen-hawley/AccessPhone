@@ -8,5 +8,6 @@ namespace AccessPhone.HelpMe {
 		public string UniqueID { get; set; }
 		public ResponseActionType ResponseAction { get; set; }
 		public object ResponseParameter { get; set; }
+		public IHelpItem FurtherQuestion { get; set; }
 	}
 }

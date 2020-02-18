@@ -15,9 +15,8 @@ namespace AccessPhone {
 
 		public Page GetPage ()
 		{
-			SimpleChoiceViewModel startModel;
-			if (TopLevelDataModel.HelpMeDatabase.TryGetValue (TopLevelDataModel.HelpMeDatabase.StartingPoint, out startModel)) {
-				return new SimpleChoicePage (TopLevelDataModel, startModel);
+			if (TopLevelDataModel.HelpMeDatabase.Start != null) {
+				return new SimpleChoicePage (TopLevelDataModel, TopLevelDataModel.HelpMeDatabase.Start);
 			}
 			return null; // FIXME - this is a fatal error
 		}

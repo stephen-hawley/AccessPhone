@@ -17,7 +17,7 @@ namespace AccessPhone {
 			Contacts = new ObservableCollection<Contact> ();
 			ToDo = new ObservableCollection<IToDoItem> ();
 			ToDone = new ObservableCollection<IToDoItem> ();
-			HelpMeDatabase = new HelpMeDatabase ();
+			HelpMeDatabase = new StaticHelpTree ();
 		}
 
 
@@ -92,7 +92,7 @@ namespace AccessPhone {
 			PropertyChanged?.Invoke (this, new PropertyChangedEventArgs (propertyName));
 		}
 
-		public HelpMeDatabase HelpMeDatabase { get; private set; }
+		public StaticHelpTree HelpMeDatabase { get; private set; }
 
 	}
 }
