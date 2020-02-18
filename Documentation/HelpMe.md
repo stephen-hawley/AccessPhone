@@ -43,23 +43,30 @@ A response contains:
 For the “ask more questions” response, the parameter is a string which is the **Name** of the next question to ask. For “end case” responses, this will text to display to the user for the end case.
 
 Hierarchy exists where it is created and is not mandated. As such, this could be represented in XML like this:
-
+```
     <helpme version="1.0" lastUpdate="date-time">
       <question name="Hurt" Text="Are you hurt?" >
         <responses>
-          <response Text="Yes" UniqueID="Yes" ResponseAction="FurtherQuestion" ResponseParameter= "Bleeding" />
+          <response Text="Yes" UniqueID="Yes" ResponseAction="FurtherQuestion">
+              <question name="Bleeding" Text="Are you bleeding?">
+                  <responses>
+                  </responses>
+              </question>
+          </reponse>
           <response Text="No" UniqueID="No" ResponseAction="FurtherQuestion" ResponseParameter="Lost" />
-        </responses>
-      </question>
-      <question name="Lost" Text="Are you lost?" >
-        <responses>
-          <response Text="Yes" UniqueID="Yes" ResponseAction="FurtherQuestion" ResponseParameter="SafeLocation" />
-          <response Text="No" UniqueID="No" ResponseAction="EndCase" ResponseParameter="I'm sorry, I don't know how to help you." />
+              <question name="Lost" Text="Are you lost?" >
+                  <responses>
+                      <response Text="Yes" UniqueID="Yes" ResponseAction="FurtherQuestion" />
+                      <response Text="No" UniqueID="No" ResponseAction="EndCase" ResponseParameter="I'm sorry, I don't know how to help you." />
+                  </responses>
+              </question>
+          </reponse>
         </responses>
       </question>
     </helpme>
+```
 
-There’s no particularly good reason why this is not an explicit tree except that might make it easier to build/edit using canned top-level questions.
 
 It’s reasonable for this data to be stored within the app. Editing will be interesting. There could be a way to retrieve the tree at app startup as well from a remote location and to download it and use it if it is newer and compatible.
+It's likely that the text could be a reference code to dig out the right text for the appropriate locale.
 

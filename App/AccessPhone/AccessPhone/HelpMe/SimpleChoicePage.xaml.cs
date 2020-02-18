@@ -22,7 +22,7 @@ namespace AccessPhone.HelpMe {
 		{
 			switch (response.ResponseAction) {
 			case ResponseActionType.FurtherQuestion:
-				GoToNextPage (response.ResponseParameter as string);
+				GoToNextPage (response);
 				break;
 			case ResponseActionType.EndCase:
 				GoToEndCase (response.ResponseParameter as string);
@@ -32,11 +32,10 @@ namespace AccessPhone.HelpMe {
 			}
 		}
 
-		void GoToNextPage (string nextPageKey)
+		void GoToNextPage (Response response)
 		{
-			SimpleChoiceViewModel nextModel;
-			if (topLevelDataModel.HelpMeDatabase.TryGetValue (nextPageKey, out nextModel)) {
-				var nextPage = new SimpleChoicePage (topLevelDataModel, nextModel);
+			if (response?.FurtherQuestion is SimpleChoiceViewModel furtherQuestion) {
+				var nextPage = new SimpleChoicePage (topLevelDataModel, furtherQuestion);
 				Navigation.PushAsync (nextPage);
 			}
 		}
