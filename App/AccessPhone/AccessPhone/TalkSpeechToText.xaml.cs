@@ -17,7 +17,6 @@ namespace AccessPhone {
 		public TalkSpeechToText ()
 		{
 			InitializeComponent ();
-			speechService = DependencyService.Get<ISpeechService> ();
 
 		}
 

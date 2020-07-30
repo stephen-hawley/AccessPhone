@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using AccessPhone.Contacts;
+using AccessPhone.Directions;
 using AccessPhone.HelpMe;
 using AccessPhone.SpeechRecognition;
 using AccessPhone.ToDo;
@@ -18,6 +19,7 @@ namespace AccessPhone {
 			ToDo = new ObservableCollection<IToDoItem> ();
 			ToDone = new ObservableCollection<IToDoItem> ();
 			HelpMeDatabase = new StaticHelpTree ();
+			Directions = new DirectionsViewModel ();
 		}
 
 
@@ -93,6 +95,8 @@ namespace AccessPhone {
 		}
 
 		public StaticHelpTree HelpMeDatabase { get; private set; }
+
+		public DirectionsViewModel Directions { get; private set; }
 
 	}
 }

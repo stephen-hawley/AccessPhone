@@ -150,6 +150,7 @@
     <BundleResource Include="Resources\hills.png" />
     <BundleResource Include="Resources\person.png" />
     <BundleResource Include="Resources\personblue.png" />
+    <BundleResource Include="Resources\compass.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Contacts\" />

@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using AccessPhone.ToDo;
 using Xamarin.Forms;
 
-namespace AccessPhone {
+namespace AccessPhone.ToDo {
 	public partial class ToDoPage : ContentPage {
 		ToDoActivity toDoActivity;
 		TopLevelDataModel topLevelDataModel;

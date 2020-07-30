@@ -132,6 +132,11 @@
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
+    <AndroidResource Include="..\AccessPhone.iOS\Resources\compass.png">
+      <Link>Resources\drawable\compass.png</Link>
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
