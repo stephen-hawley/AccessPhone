@@ -21,11 +21,14 @@
     <Folder Include="SpeechRecognition\" />
     <Folder Include="ToDo\" />
     <Folder Include="HelpMe\" />
+    <Folder Include="Directions\" />
+    <Folder Include="Converters\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="Resources\Resources.resx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Resources\Resources.Designer.cs" />
+    <Compile Remove="Directions\DirectionsStart.cs" />
   </ItemGroup>
 </Project>

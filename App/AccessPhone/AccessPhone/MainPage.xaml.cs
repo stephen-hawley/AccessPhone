@@ -81,27 +81,27 @@ namespace AccessPhone {
 
 		void Pay_Clicked (object sender, System.EventArgs e)
 		{
-			ButtonClicked (nameof(Pay));
+			ButtonClicked (nameof (Pay));
 		}
 		void People_Clicked (object sender, System.EventArgs e)
 		{
-			ButtonClicked (nameof(People));
-		}
-		void Lock_Clicked (object sender, System.EventArgs e)
-		{
-			ButtonClicked (nameof(Lock));
+			ButtonClicked (nameof (People));
 		}
 		void ToDo_Clicked (object sender, System.EventArgs e)
 		{
-			ButtonClicked (nameof(ToDo));
+			ButtonClicked (nameof (ToDo));
 		}
 		void Dates_Clicked (object sender, System.EventArgs e)
 		{
-			ButtonClicked (nameof(Dates));
+			ButtonClicked (nameof (Dates));
 		}
 		void Emergency_Clicked (object sender, System.EventArgs e)
 		{
-			ButtonClicked (nameof(Emergency));
+			ButtonClicked (nameof (Emergency));
+		}
+		void Directions_Clicked (object sender, System.EventArgs e)
+		{
+			ButtonClicked (nameof (Directions));
 		}
 
 		ITopLevelActivity FindActivityByName (string name)

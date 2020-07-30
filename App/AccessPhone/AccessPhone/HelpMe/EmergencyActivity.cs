@@ -3,7 +3,7 @@ using System.ComponentModel;
 using AccessPhone.HelpMe;
 using Xamarin.Forms;
 
-namespace AccessPhone {
+namespace AccessPhone.HelpMe {
 	public class EmergencyActivity : ITopLevelActivity {
 		public EmergencyActivity ()
 		{

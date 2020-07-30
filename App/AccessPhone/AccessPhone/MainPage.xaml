@@ -32,10 +32,10 @@
                     <Label Text="Emergency" HorizontalTextAlignment="Center"/>
                 </StackLayout>
             </Frame>
-            <Frame x:Name="LockFrame" IsVisible="false"  Margin="10">
+            <Frame x:Name="DirectionsFrame" IsVisible="false"  Margin="10">
                 <StackLayout>
-                    <ImageButton  x:Name="Lock" Source="lock.png" Clicked="Lock_Clicked"/>
-                    <Label Text="Keys" HorizontalTextAlignment="Center"/>
+                    <ImageButton  x:Name="Directions" Source="compass.png" Clicked="Directions_Clicked"/>
+                    <Label Text="Directions" HorizontalTextAlignment="Center"/>
                 </StackLayout>
             </Frame>
             <Frame x:Name="ToDoFrame" IsVisible="false" Margin="10" >

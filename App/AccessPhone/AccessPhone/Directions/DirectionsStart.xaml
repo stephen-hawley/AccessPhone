@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:AccessPhone.Converters"
+             x:Class="AccessPhone.Directions.DirectionsStart"
+             >
+    <ContentPage.Resources>
+        <converters:InverseBoolConverter x:Key="InverseBoolConverter" />
+        <Style x:Key="LabelStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="25"/>
+        </Style>
+        <Style x:Key="EntryStyle" TargetType="Entry">
+            <Setter Property="FontSize" Value="25"/>
+        </Style>
+        <Style x:Key="PickerStyle" TargetType="Picker">
+            <Setter Property="FontSize" Value="25"/>
+        </Style>
+        <Style x:Key="TimePickerStyle" TargetType="TimePicker">
+            <Setter Property="FontSize" Value="25"/>
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Where do you need to go?" Style="{StaticResource LabelStyle}" />
+            <Label Text="Speak or type it here:" Style="{StaticResource LabelStyle}" />
+            <StackLayout Orientation="Horizontal">
+                <Button Text= "🎤" Pressed="Record_Pressed" Released="Record_Released"/>
+                <Entry x:Name="DestText" WidthRequest="300" MinimumHeightRequest="300"
+                       TextChanged="DestLocation_Changed"
+                       Style="{StaticResource EntryStyle}"
+                       />
+                <Button Text = "🌎" />
+            </StackLayout>
+            <Label Text="Or pick a recent place: " Style="{StaticResource LabelStyle}" />
+            <Picker ItemsSource="{Binding ViewModel.RecentDestinations}"
+                    ItemDisplayBinding="{Binding Name}"
+                    SelectedIndex="{Binding ViewModel.SelectedRecent}"
+                    SelectedIndexChanged="Picker_SelectionChanged"
+                    Style="{StaticResource PickerStyle}"
+                    />
+            <Label Text="What time do you need to get there?" Style="{StaticResource LabelStyle}" />
+            <StackLayout Orientation="Horizontal">
+                <CheckBox IsChecked="{Binding ViewModel.IsAnyTime}" />
+                <Label Text="Any time is OK"  Style="{StaticResource LabelStyle}" VerticalTextAlignment="End"/>
+            </StackLayout>
+            <TimePicker Time="{Binding ViewModel.ArrivalTime}" Format="T"
+                        IsEnabled="{Binding ViewModel.IsAnyTime, Converter={StaticResource InverseBoolConverter}}"
+                        Style="{StaticResource TimePickerStyle}"
+                        />
+            <Button Text="Let's Go!" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -3,24 +3,20 @@ using System.ComponentModel;
 using Xamarin.Forms;
 using AccessPhone.ToDo;
 
-namespace AccessPhone {
-	public class ToDoActivity : ITopLevelActivity {
-		IToDoService toDoService;
+namespace AccessPhone.Directions {
+	public class DirectionsActivity : ITopLevelActivity {
 
-		public ToDoActivity ()
+		public DirectionsActivity ()
 		{
-			toDoService = DependencyService.Get<IToDoService> ();
-			toDoService.CreateService ();
-			enabled = toDoService.Available;
 		}
 
-		public string Name => "ToDo";
+		public string Name => "Directions";
 
 		public TopLevelDataModel TopLevelDataModel { get; set; }
 
 		public Page GetPage ()
 		{
-			return new ToDoPage (this, TopLevelDataModel, toDoService);
+			return new DirectionsStart (this, TopLevelDataModel);
 		}
 
 		bool allowed = true;
