@@ -5,6 +5,7 @@ using System.Linq;
 using Foundation;
 using UIKit;
 using ImageCircle.Forms.Plugin.iOS;
+using Google.Maps;
 
 namespace AccessPhone.iOS {
 	// The UIApplicationDelegate for the application. This class is responsible for launching the 
@@ -19,8 +20,13 @@ namespace AccessPhone.iOS {
 		//
 		// You have 17 seconds to return from this method, or iOS will terminate your application.
 		//
+		// 42.312952,-72.650308
+
+		// never commit with the key here.
+		static string kMapsApiKey = "#insert-google-api-key#";
 		public override bool FinishedLaunching (UIApplication app, NSDictionary options)
 		{
+			MapServices.ProvideAPIKey (kMapsApiKey);
 			global::Xamarin.Forms.Forms.Init ();
 			ImageCircleRenderer.Init ();
 			LoadApplication (new App ());
