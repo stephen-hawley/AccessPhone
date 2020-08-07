@@ -24,6 +24,7 @@
     <Folder Include="HelpMe\" />
     <Folder Include="Directions\" />
     <Folder Include="Converters\" />
+    <Folder Include="APIKeys\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="Resources\Resources.resx" />
