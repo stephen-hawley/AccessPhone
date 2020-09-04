@@ -31,6 +31,7 @@ namespace AccessPhone.Droid {
 
 		public override void OnRequestPermissionsResult (int requestCode, string [] permissions, [GeneratedEnum] global::Android.Content.PM.Permission [] grantResults)
 		{
+			Xamarin.Essentials.Platform.OnRequestPermissionsResult (requestCode, permissions, grantResults);
 			base.OnRequestPermissionsResult (requestCode, permissions, grantResults);
 		}
 
@@ -39,6 +40,9 @@ namespace AccessPhone.Droid {
 			var perms = new string [] {
 				Manifest.Permission.ReadContacts, Manifest.Permission.ReadExternalStorage,
 				Manifest.Permission.WriteExternalStorage, Manifest.Permission.ReadCalendar,
+				Manifest.Permission.LocationHardware,
+				Manifest.Permission.AccessCoarseLocation,
+				Manifest.Permission.AccessFineLocation,
 			};
 			ActivityCompat.RequestPermissions (this, perms, 1);
 		}
