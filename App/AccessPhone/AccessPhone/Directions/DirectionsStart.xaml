@@ -18,6 +18,12 @@
         <Style x:Key="TimePickerStyle" TargetType="TimePicker">
             <Setter Property="FontSize" Value="25"/>
         </Style>
+        <Style x:Key="ChoicesNameStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="25"/>
+        </Style>
+        <Style x:Key="ChoicesAddressStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="15"/>
+        </Style>
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
@@ -31,23 +37,39 @@
                        />
                 <Button Text = "🌎" />
             </StackLayout>
-            <Label Text="Or pick a recent place: " Style="{StaticResource LabelStyle}" />
-            <Picker ItemsSource="{Binding ViewModel.RecentDestinations}"
-                    ItemDisplayBinding="{Binding Name}"
-                    SelectedIndex="{Binding ViewModel.SelectedRecent}"
-                    SelectedIndexChanged="Picker_SelectionChanged"
-                    Style="{StaticResource PickerStyle}"
-                    />
-            <Label Text="What time do you need to get there?" Style="{StaticResource LabelStyle}" />
-            <StackLayout Orientation="Horizontal">
-                <CheckBox IsChecked="{Binding ViewModel.IsAnyTime}" />
-                <Label Text="Any time is OK"  Style="{StaticResource LabelStyle}" VerticalTextAlignment="End"/>
-            </StackLayout>
-            <TimePicker Time="{Binding ViewModel.ArrivalTime}" Format="T"
-                        IsEnabled="{Binding ViewModel.IsAnyTime, Converter={StaticResource InverseBoolConverter}}"
-                        Style="{StaticResource TimePickerStyle}"
-                        />
-            <Button Text="Let's Go!" />
+            <Grid>
+                <StackLayout x:Name="TheRestOfTheControls" >
+                    <Label Text="Or pick a recent place: " Style="{StaticResource LabelStyle}" />
+                    <Picker ItemsSource="{Binding ViewModel.RecentDestinations}"
+                            ItemDisplayBinding="{Binding Name}"
+                            SelectedIndex="{Binding ViewModel.SelectedRecent}"
+                            SelectedIndexChanged="Picker_SelectionChanged"
+                            Style="{StaticResource PickerStyle}"
+                            />
+                    <Label Text="What time do you need to get there?" Style="{StaticResource LabelStyle}" />
+                    <StackLayout Orientation="Horizontal">
+                        <CheckBox IsChecked="{Binding ViewModel.IsAnyTime}" />
+                        <Label Text="Any time is OK"  Style="{StaticResource LabelStyle}" VerticalTextAlignment="End"/>
+                    </StackLayout>
+                    <TimePicker Time="{Binding ViewModel.ArrivalTime}" Format="T"
+                                IsEnabled="{Binding ViewModel.IsAnyTime, Converter={StaticResource InverseBoolConverter}}"
+                                Style="{StaticResource TimePickerStyle}"
+                                />
+                    <Button Text="Let's Go!" />
+                </StackLayout>
+                <ListView x:Name="PossibleChoices">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal" >
+                                    <Label Text="{Binding Name}" Style="{StaticResource ChoicesNameStyle}" VerticalOptions="CenterAndExpand" />
+                                    <Label Text="{Binding Address}" Style="{StaticResource ChoicesAddressStyle}" VerticalOptions="CenterAndExpand" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
